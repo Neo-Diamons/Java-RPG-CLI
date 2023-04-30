@@ -1,4 +1,4 @@
-package rpg.example;
+package fr.diamons.rpg;
 
 public class Main {
     public static void main(String[] args) {

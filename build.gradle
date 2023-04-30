@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'rpg.example'
+group 'fr.diamons.rpg'
 version '1.0-SNAPSHOT'
 
 repositories {

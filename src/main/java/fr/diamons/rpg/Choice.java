@@ -1,4 +1,4 @@
-package rpg.example;
+package fr.diamons.rpg;
 
 public class Choice {
     private final String name;

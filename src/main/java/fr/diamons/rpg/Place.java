@@ -1,4 +1,4 @@
-package rpg.example;
+package fr.diamons.rpg;
 
 public class Place extends Choice {
     public Place(String name) {
