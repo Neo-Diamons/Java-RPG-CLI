@@ -20,8 +20,8 @@ public class Choice {
         this.choices = newChoices;
     }
 
-    private void displayChoices(String name) {
-        System.out.println("\n/----------[ Current " + name + ": " + this.name + " ]----------\\");
+    private void displayChoices(String msg) {
+        System.out.println("\n/----------[ " + msg + ": " + this.name + " ]----------\\");
         for (int i = 0; i < this.choices.length; i++) {
             System.out.println((i + 1) + ". " + this.choices[i].name);
         }
@@ -37,9 +37,9 @@ public class Choice {
         return null;
     }
 
-    public Choice chooseChoice(String name) {
+    public Choice chooseChoice(String msg) {
         while (true) {
-            displayChoices(name);
+            displayChoices(msg);
             System.out.print("Enter your choice: ");
             String choice = new java.util.Scanner(System.in).nextLine();
             Choice destination = isInside(choice);

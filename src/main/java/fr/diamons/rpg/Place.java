@@ -15,6 +15,6 @@ public class Place extends Choice {
     }
 
     public Place chooseDestination() {
-        return (Place) super.chooseChoice("destination");
+        return (Place) super.chooseChoice("Current place");
     }
 }
