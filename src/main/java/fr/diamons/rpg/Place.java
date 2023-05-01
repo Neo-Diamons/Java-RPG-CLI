@@ -1,20 +1,18 @@
 package fr.diamons.rpg;
 
 public class Place extends Choice {
+    private final Path path;
+
     public Place(String name) {
         super(name);
+        this.path = new Path(this);
     }
 
     public void addDestination(Place destination) {
-        if (isInside(destination.getName()) != null) {
-                System.out.println("\033[31m" + destination.getName() + " already exists\033[0m");
-                return;
-            }
-        super.addChoice(destination);
-        destination.addChoice(this);
+        this.path.addDestination(destination.path);
     }
 
     public Place chooseDestination() {
-        return (Place) super.chooseChoice("Current place");
+        return path.chooseDestination();
     }
 }
