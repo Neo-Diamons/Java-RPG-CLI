@@ -9,7 +9,7 @@ public class Main {
         currentPlace.addDestination(new Place("Mountain"));
 
         while (true) {
-            currentPlace = currentPlace.chooseDestination();
+            currentPlace = currentPlace.chooseChoice();
         }
     }
 }

@@ -44,7 +44,6 @@ public class Choice {
             String choice = new java.util.Scanner(System.in).nextLine();
             Choice destination = isInside(choice);
             if (destination != null) {
-                System.out.println("You chose " + destination.name);
                 return destination;
             } else {
                 System.out.println("\033[31mInvalid choice\033[0m");

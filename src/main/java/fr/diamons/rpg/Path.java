@@ -9,8 +9,10 @@ public class Path extends Choice {
     }
 
     public void addDestination(Path destination) {
-        if (isInside(destination.getName()) != null)
-                return;
+        if (isInside(destination.getName()) != null) {
+            return;
+        }
+
         super.addChoice(destination);
         destination.addChoice(this);
     }
