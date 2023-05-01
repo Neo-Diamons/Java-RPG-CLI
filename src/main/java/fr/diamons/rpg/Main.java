@@ -8,7 +8,7 @@ public class Main {
         currentPlace.addDestination(new Place("River"));
         currentPlace.addDestination(new Place("Mountain"));
 
-        while (true) {
+        while (currentPlace != null) {
             currentPlace = currentPlace.chooseChoice();
         }
     }

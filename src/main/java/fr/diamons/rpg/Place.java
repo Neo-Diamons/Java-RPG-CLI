@@ -26,7 +26,7 @@ public class Place extends Choice {
                 case "Move":
                     return path.chooseDestination();
                 case "Quit":
-                    System.exit(0);
+                    return null;
             }
         }
     }
