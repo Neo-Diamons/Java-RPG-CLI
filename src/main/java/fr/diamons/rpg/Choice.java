@@ -46,6 +46,10 @@ public class Choice {
             if (destination != null) {
                 return destination;
             } else {
+                int value = Integer.parseInt(choice);
+                if (value > 0 && value <= this.choices.length) {
+                    return this.choices[value - 1];
+                }
                 System.out.println("\033[31mInvalid choice\033[0m");
             }
         }
