@@ -49,6 +49,10 @@ public class Player {
         this.inventory.addItem(item);
     }
 
+    public void displayInventory() {
+        this.inventory.displayItems();
+    }
+
     public void displayStats() {
         System.out.println("\n/----------[ Stats: " + this.name + " ]----------\\\n" +
                 "Health:\t" + this.health + "/" + this.maxHealth + "\n" +

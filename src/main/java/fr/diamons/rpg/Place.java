@@ -7,6 +7,7 @@ public class Place extends Choice {
         super(name);
         this.path = new Path(this);
 
+        this.addChoice(new Choice("Fight"));
         this.addChoice(new Choice("Inventory"));
         this.addChoice(new Choice("Stats"));
         this.addChoice(new Choice("Move"));
@@ -20,8 +21,10 @@ public class Place extends Choice {
     public Place chooseChoice(Player player) {
         while (true) {
             switch (super.chooseChoice("Current place").getName()) {
-                case "Inventory":
+                case "Fight":
                     System.out.println("\033[33mNot implemented yet\033[0m"); break;
+                case "Inventory":
+                    player.displayInventory(); break;
                 case "Stats":
                     player.displayStats(); break;
                 case "Move":

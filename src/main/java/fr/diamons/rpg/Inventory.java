@@ -13,11 +13,16 @@ public class Inventory {
     }
 
     public void displayItems() {
+        int nbItems = 0;
         System.out.println("\n/----------[ Inventory ]----------\\");
         for (Item item : items) {
             if (item != null) {
-                System.out.println(item.getName());
+                System.out.println(nbItems + ". " + item.getName());
+                nbItems++;
             }
+        }
+        if (nbItems == 0) {
+            System.out.println("\033[3mEmpty\033[0m");
         }
 
         System.out.print("\nPress enter to continue...");
