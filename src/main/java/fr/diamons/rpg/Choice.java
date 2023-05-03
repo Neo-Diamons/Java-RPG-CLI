@@ -42,16 +42,19 @@ public class Choice {
             displayChoices(msg);
             System.out.print("Enter your choice: ");
             String choice = new java.util.Scanner(System.in).nextLine();
-            Choice destination = isInside(choice);
-            if (destination != null) {
-                return destination;
-            } else {
+
+            if (choice.matches("[0-9]")) {
                 int value = Integer.parseInt(choice);
                 if (value > 0 && value <= this.choices.length) {
                     return this.choices[value - 1];
                 }
-                System.out.println("\033[31mInvalid choice\033[0m");
             }
+
+            Choice destination = isInside(choice);
+            if (destination != null) {
+                return destination;
+            }
+            System.out.println("\033[31mInvalid choice\033[0m");
         }
     }
 }
