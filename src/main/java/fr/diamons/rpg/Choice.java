@@ -1,12 +1,14 @@
 package fr.diamons.rpg;
 
+import java.util.LinkedList;
+
 public class Choice {
     private final String name;
-    private Choice[] choices;
+    private final LinkedList<Choice> choices;
 
     public Choice(String name) {
         this.name = name;
-        this.choices = new Choice[0];
+        this.choices = new LinkedList<Choice>();
     }
 
     public String getName() {
@@ -14,16 +16,15 @@ public class Choice {
     }
 
     public void addChoice(Choice choice) {
-        Choice[] newChoices = new Choice[this.choices.length + 1];
-        System.arraycopy(this.choices, 0, newChoices, 0, this.choices.length);
-        newChoices[this.choices.length] = choice;
-        this.choices = newChoices;
+        this.choices.add(choice);
     }
 
     private void displayChoices(String msg) {
+        int i = 1;
         System.out.println("\n/----------[ " + msg + ": " + this.name + " ]----------\\");
-        for (int i = 0; i < this.choices.length; i++) {
-            System.out.println((i + 1) + ". " + this.choices[i].name);
+        for (Choice choice : this.choices) {
+            System.out.println(i + ". " + choice.name);
+            i++;
         }
         System.out.println();
     }
@@ -45,8 +46,8 @@ public class Choice {
 
             if (choice.matches("[0-9]")) {
                 int value = Integer.parseInt(choice);
-                if (value > 0 && value <= this.choices.length) {
-                    return this.choices[value - 1];
+                if (value > 0 && value <= this.choices.size()) {
+                    return this.choices.get(value - 1);
                 }
             }
 
