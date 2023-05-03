@@ -6,6 +6,7 @@ public class Player {
     private int health;
     private int attack;
     private int level;
+    private final Inventory inventory = new Inventory();
 
     public Player(String name, int maxHealth, int attack, int level) {
         this.name = name;
@@ -42,6 +43,10 @@ public class Player {
     public void addToLevel(int value) {
         this.level += value;
         this.attack = (int)Math.log(Math.abs(value)) * 10;
+    }
+
+    public void addToInventory(Item item) {
+        this.inventory.addItem(item);
     }
 
     public void displayStats() {
