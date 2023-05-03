@@ -17,12 +17,13 @@ public class Place extends Choice {
         this.path.addDestination(destination.path);
     }
 
-    public Place chooseChoice() {
+    public Place chooseChoice(Player player) {
         while (true) {
             switch (super.chooseChoice("Current place").getName()) {
                 case "Inventory":
-                case "Stats":
                     System.out.println("\033[33mNot implemented yet\033[0m"); break;
+                case "Stats":
+                    player.displayStats(); break;
                 case "Move":
                     return path.chooseDestination();
                 case "Quit":
