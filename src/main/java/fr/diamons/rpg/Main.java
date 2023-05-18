@@ -25,8 +25,11 @@ public class Main {
                 new Monster("God", 400, 40, 7)
         }));
 
-        while (currentPlace != null) {
+        while (currentPlace != null && player.getHealth() > 0) {
             currentPlace = currentPlace.chooseChoice(player);
+        }
+        if (player.getHealth() <= 0) {
+            System.out.println("\nYou died !");
         }
     }
 }
