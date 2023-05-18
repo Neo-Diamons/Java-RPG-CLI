@@ -1,6 +1,5 @@
 package fr.diamons.rpg;
 
-
 import fr.diamons.rpg.entity.Monster;
 import fr.diamons.rpg.entity.Player;
 import fr.diamons.rpg.item.Food;

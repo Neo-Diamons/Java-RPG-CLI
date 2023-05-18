@@ -14,6 +14,16 @@ public class Inventory {
         }
     }
 
+    public int countItems(String name) {
+        int count = 0;
+        for (Item item : this.items) {
+            if (item != null && item.getName().equals(name)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public Item useItem(String name) {
         for (int i = 0; i < this.items.length; i++) {
             if (this.items[i] != null && this.items[i].getName().equals(name)) {

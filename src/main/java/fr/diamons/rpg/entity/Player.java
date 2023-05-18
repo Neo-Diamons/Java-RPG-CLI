@@ -13,6 +13,10 @@ public class Player extends Entity {
         this.xp = 0;
     }
 
+    public void fullHeal() {
+        this.health = this.maxHealth;
+    }
+
     public void Heal() {
         Food food = (Food)this.inventory.useItem("Apple");
         if (food == null) {
@@ -45,8 +49,20 @@ public class Player extends Entity {
         }
     }
 
+    public void addAttack(int attack) {
+        this.attack += attack;
+    }
+
+    public int countItems(String name) {
+        return this.inventory.countItems(name);
+    }
+
     public void addItem(Item item) {
         this.inventory.addItem(item);
+    }
+
+    public Item useItem(String name) {
+        return this.inventory.useItem(name);
     }
 
     public void displayInventory() {

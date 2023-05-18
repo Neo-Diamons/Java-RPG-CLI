@@ -15,14 +15,32 @@ public class Town extends Place {
         this.addChoice(new Choice("Quit"));
     }
 
+    private void useForge(Player player) {
+        if (player.countItems("Iron") < 3) {
+            System.out.println("\nYou don't have enough iron to forge a sword");
+            return;
+        }
+
+        for (int i = 0; i < 3; i++) {
+            player.useItem("Iron");
+        }
+        player.addAttack(2);
+    }
+
+    private void useInn(Player player) {
+        player.fullHeal();
+
+        System.out.println("\n" + player.getName() + " healed to full health!");
+    }
+
     @Override
     public Place chooseChoice(Player player) {
         while (true) {
             switch (super.chooseChoice("Current place").getName()) {
                 case "Forge":
-                    break;
+                    this.useForge(player); break;
                 case "Inn":
-                    break;
+                    this.useInn(player); break;
                 case "Inventory":
                     player.displayInventory(); break;
                 case "Stats":
