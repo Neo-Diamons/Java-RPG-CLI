@@ -4,18 +4,29 @@ public class Inventory {
     private final Item[] items = new Item[10];
 
     public void addItem(Item item) {
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] == null) {
-                items[i] = item;
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i] == null) {
+                this.items[i] = item;
                 return;
             }
         }
     }
 
+    public Item useItem(String name) {
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i] != null && this.items[i].getName().equals(name)) {
+                Item item = this.items[i];
+                this.items[i] = null;
+                return item;
+            }
+        }
+        return null;
+    }
+
     public void displayItems() {
         int nbItems = 1;
         System.out.println("\n/----------[ Inventory ]----------\\");
-        for (Item item : items) {
+        for (Item item : this.items) {
             if (item != null) {
                 System.out.println(nbItems + ". " + item.getName());
                 nbItems++;

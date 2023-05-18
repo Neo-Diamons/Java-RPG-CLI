@@ -13,13 +13,13 @@ public class Player extends Entity {
     }
 
     public void Heal() {
-        Random random = new Random();
-        int min = (int)(this.maxHealth * 0.20);
-        int max = (int)(this.maxHealth * 0.25);
-        int value = random.nextInt(max - min + 1) + min;
-        this.health += value;
+        Food food = (Food)this.inventory.useItem("Apple");
+        if (food == null) {
+            System.out.println("\nYou don't have any food.");
+            return;
+        }
 
-        System.out.println("\n" + this.name +  " healed " + value + " health!");
+        System.out.println("\n" + this.name +  " healed " + Math.min(food.getHealth(), this.maxHealth) + " health!");
         System.out.println(this.name + " has " + this.health + "/" + this.maxHealth + " health left.");
     }
 

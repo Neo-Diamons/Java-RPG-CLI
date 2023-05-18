@@ -48,17 +48,17 @@ public class Fight extends Choice {
     }
 
     public void start() {
-        Monster monster = monsters[new java.util.Random().nextInt(monsters.length)];
+        Monster monster = this.monsters[new java.util.Random().nextInt(this.monsters.length)];
 
         System.out.println("\n/----------[ Fight ]----------\\");
         System.out.println("You are fighting a " + monster.getName() + " (Level " + monster.getLevel() + ")");
 
-        while (player.getHealth() > 0 && monster.getHealth() > 0) {
+        while (this.player.getHealth() > 0 && monster.getHealth() > 0) {
             switch (super.chooseChoice("Your turn").getName()) {
                 case "Attack":
-                    player.dealDamage(monster); break;
+                    this.player.dealDamage(monster); break;
                 case "Heal":
-                    player.Heal(); break;
+                    this.player.Heal(); break;
                 case "Run":
                     if (isRunning(monster)) {
                         System.out.println("\nYou ran away from the fight !");
@@ -70,15 +70,15 @@ public class Fight extends Choice {
 
             if (monster.getHealth() > 0) {
                 System.out.println("\n/----------[ Monster turn ]----------\\");
-                monster.dealDamage(player);
+                monster.dealDamage(this.player);
             }
         }
 
-        if (player.getHealth() > 0) {
+        if (this.player.getHealth() > 0) {
             System.out.println("\nYou won the fight !");
-            player.addXp(monster.getLevel() * 25);
+            this.player.addXp(monster.getLevel() * 25);
             dropItem();
-        } else if (player.getHealth() <= 0) {
+        } else if (this.player.getHealth() <= 0) {
             System.out.println("\nYou lost the fight !");
         }
 
