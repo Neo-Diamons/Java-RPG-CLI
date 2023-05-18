@@ -23,7 +23,7 @@ public class Fight extends Choice {
             {
                 switch (super.chooseChoice("Your turn").getName()) {
                     case "Fight":
-                        monster.addDamage(player.getAttack()); break;
+                        player.dealDamage(monster); break;
                     case "Heal":
                         break; // TODO: heal
                     case "Run":
@@ -33,7 +33,7 @@ public class Fight extends Choice {
 
             if (monster.getHealth() > 0) {
                 System.out.println("\n/----------[ Monster turn ]----------\\");
-                player.addDamage(monster.getAttack());
+                monster.dealDamage(player);
             }
         }
 

@@ -1,60 +1,11 @@
 package fr.diamons.rpg;
 
-public class Player {
-    private final String name;
-    private final int maxHealth;
-    private int health;
-    private int attack;
-    private int level;
-    private final Inventory inventory = new Inventory();
+public class Player extends Entity {
+    private final Inventory inventory;
 
-    public Player(String name, int maxHealth, int attack, int level) {
-        this.name = name;
-        this.maxHealth = maxHealth;
-        this.health = maxHealth;
-        this.attack = attack;
-        this.level = level;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getHealth() {
-        return this.health;
-    }
-
-    public int getMaxHealth() {
-        return this.maxHealth;
-    }
-
-    public int getAttack() {
-        return this.attack;
-    }
-
-    public void addDamage(int damage) {
-        this.health -= damage;
-
-        System.out.println("\nYou took " + damage + " damage!");
-        System.out.println("You have " + this.health + "/" + this.maxHealth + " health left.");
-
-    }
-
-    public int getLevel() {
-        return this.level;
-    }
-
-    public void addToHealth(int value) {
-        this.health += value;
-    }
-
-    public void addToLevel(int value) {
-        this.level += value;
-        this.attack = (int)Math.log(Math.abs(value)) * 10;
-    }
-
-    public void addToInventory(Item item) {
-        this.inventory.addItem(item);
+    public Player(String name, int health, int attack, int level) {
+        super(name, health, attack, level);
+        this.inventory = new Inventory();
     }
 
     public void displayInventory() {
