@@ -13,7 +13,7 @@ public class Inventory {
     }
 
     public void displayItems() {
-        int nbItems = 0;
+        int nbItems = 1;
         System.out.println("\n/----------[ Inventory ]----------\\");
         for (Item item : items) {
             if (item != null) {

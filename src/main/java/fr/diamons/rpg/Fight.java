@@ -9,11 +9,12 @@ public class Fight extends Choice {
         super("Fight");
         this.player = player;
         this.monsters = new Monster[] {
-                new Monster("Goblin", 100, 10, 1),
-                new Monster("Orc", 150, 15, 2),
-                new Monster("Troll", 200, 20, 3),
-                new Monster("Dragon", 250, 25, 4),
-                new Monster("Demon", 300, 30, 5)
+                new Monster("Slime", 50, 5, 1),
+//                new Monster("Goblin", 100, 10, 1),
+//                new Monster("Orc", 150, 15, 2),
+//                new Monster("Troll", 200, 20, 3),
+//                new Monster("Dragon", 250, 25, 4),
+//                new Monster("Demon", 300, 30, 5)
         };
 
         this.addChoice(new Choice("Attack"));
@@ -33,6 +34,19 @@ public class Fight extends Choice {
         return random < chance;
     }
 
+    public void dropItem() {
+        int random = new java.util.Random().nextInt(100);
+
+        if (random < 50) {
+            System.out.println("\nYou didn't get any item.");
+            return;
+        }
+
+        Item item = new Food("Apple", 10);
+        this.player.addItem(item);
+        System.out.println("\nYou got a " + item.getName() + " !");
+    }
+
     public void start() {
         Monster monster = monsters[new java.util.Random().nextInt(monsters.length)];
 
@@ -41,7 +55,7 @@ public class Fight extends Choice {
 
         while (player.getHealth() > 0 && monster.getHealth() > 0) {
             switch (super.chooseChoice("Your turn").getName()) {
-                case "Fight":
+                case "Attack":
                     player.dealDamage(monster); break;
                 case "Heal":
                     player.Heal(); break;
@@ -64,6 +78,7 @@ public class Fight extends Choice {
             System.out.println("\nYou won the fight !");
             System.out.println("You earned " + monster.getLevel() * 10 + " XP");
             // TODO: add xp
+            dropItem();
         } else if (player.getHealth() <= 0) {
             System.out.println("\nYou lost the fight !");
         }

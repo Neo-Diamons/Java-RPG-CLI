@@ -21,6 +21,10 @@ public class Player extends Entity {
         System.out.println(this.name + " has " + this.health + "/" + this.maxHealth + " health left.");
     }
 
+    public void addItem(Item item) {
+        this.inventory.addItem(item);
+    }
+
     public void displayInventory() {
         this.inventory.displayItems();
     }
