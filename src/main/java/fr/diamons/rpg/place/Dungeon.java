@@ -1,12 +1,16 @@
 package fr.diamons.rpg.place;
 
 import fr.diamons.rpg.Choice;
+import fr.diamons.rpg.Fight;
+import fr.diamons.rpg.entity.Monster;
 import fr.diamons.rpg.entity.Player;
 
 public class Dungeon extends Place {
+    private final Fight fight;
 
-    public Dungeon(String name) {
+    public Dungeon(String name, Monster[] monsters) {
         super(name);
+        this.fight = new Fight(monsters);
 
         this.addChoice(new Choice("Fight"));
         this.addChoice(new Choice("Inventory"));
@@ -20,7 +24,7 @@ public class Dungeon extends Place {
         while (true) {
             switch (super.chooseChoice("Current place").getName()) {
                 case "Fight":
-                    new fr.diamons.rpg.Fight(player).start(); break;
+                    this.fight.start(player); break;
                 case "Inventory":
                     player.displayInventory(); break;
                 case "Stats":
