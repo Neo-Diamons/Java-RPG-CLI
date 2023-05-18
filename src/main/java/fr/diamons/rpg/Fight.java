@@ -1,6 +1,7 @@
 package fr.diamons.rpg;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Fight {
     private final Player player;
@@ -21,21 +22,35 @@ public class Fight {
             System.out.println("2. Heal");
             System.out.println("3. Run");
 
-            int choice = new java.util.Scanner(System.in).nextInt();
+            {
+                boolean isValid = false;
 
-            switch (choice) {
-                case 1:
-                    monster.addDamage(player.getAttack());
-                    break;
-                case 2:
+                while (!isValid) {
+                    String choice = new java.util.Scanner(System.in).nextLine();
+
+                    if (!choice.matches("[0-9]")) {
+                        continue;
+                    }
+
+                    int value = Integer.parseInt(choice);
+                    switch (value) {
+                        case 1:
+                            isValid = true;
+                            monster.addDamage(player.getAttack());
+                            break;
+                        case 2:
+                            isValid = true;
 //                    playerHeal();
-                    break;
-                case 3:
+                            break;
+                        case 3:
+                            isValid = true;
 //                    playerRun();
-                    break;
-                default:
-                    System.out.println("Invalid choice");
-                    break;
+                            break;
+                        default:
+                            System.out.println("Invalid choice");
+                            break;
+                    }
+                }
             }
 
             if (monster.getHealth() > 0) {
