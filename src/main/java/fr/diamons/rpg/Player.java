@@ -32,6 +32,14 @@ public class Player {
         return this.attack;
     }
 
+    public void addDamage(int damage) {
+        this.health -= damage;
+
+        System.out.println("\nYou took " + damage + " damage!");
+        System.out.println("You have " + this.health + "/" + this.maxHealth + " health left.");
+
+    }
+
     public int getLevel() {
         return this.level;
     }
