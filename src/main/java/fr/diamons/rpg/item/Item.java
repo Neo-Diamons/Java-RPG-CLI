@@ -1,4 +1,4 @@
-package fr.diamons.rpg;
+package fr.diamons.rpg.item;
 
 public class Item {
     private final String name;

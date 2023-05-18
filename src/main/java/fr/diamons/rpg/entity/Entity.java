@@ -1,4 +1,4 @@
-package fr.diamons.rpg;
+package fr.diamons.rpg.entity;
 
 public class Entity {
     public final String name;
@@ -21,10 +21,6 @@ public class Entity {
 
     public int getHealth() {
         return this.health;
-    }
-
-    public int getAttack() {
-        return this.attack;
     }
 
     public void addDamage(int damage) {

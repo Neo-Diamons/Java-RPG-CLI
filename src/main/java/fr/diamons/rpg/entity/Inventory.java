@@ -1,4 +1,6 @@
-package fr.diamons.rpg;
+package fr.diamons.rpg.entity;
+
+import fr.diamons.rpg.item.Item;
 
 public class Inventory {
     private final Item[] items = new Item[10];

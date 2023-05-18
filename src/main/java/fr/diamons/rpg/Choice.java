@@ -29,7 +29,7 @@ public class Choice {
         System.out.println();
     }
 
-    Choice isInside(String search) {
+    public Choice isInside(String search) {
         for (Choice choice : this.choices) {
             if (choice.name.equalsIgnoreCase(search)) {
                 return choice;

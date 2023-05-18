@@ -1,6 +1,11 @@
 package fr.diamons.rpg;
 
 
+import fr.diamons.rpg.entity.Monster;
+import fr.diamons.rpg.entity.Player;
+import fr.diamons.rpg.item.Food;
+import fr.diamons.rpg.item.Item;
+
 public class Fight extends Choice {
     private final Player player;
     private final Monster[] monsters;

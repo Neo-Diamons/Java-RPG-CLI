@@ -1,4 +1,6 @@
-package fr.diamons.rpg;
+package fr.diamons.rpg.place;
+
+import fr.diamons.rpg.Choice;
 
 public class Path extends Choice {
     private final Place parent;
@@ -18,6 +20,6 @@ public class Path extends Choice {
     }
 
     public Place chooseDestination() {
-        return ((Path) super.chooseChoice("Current place")).parent;
+        return ((Path)super.chooseChoice("Current place")).parent;
     }
 }

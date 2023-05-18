@@ -1,4 +1,6 @@
-package fr.diamons.rpg;
+package fr.diamons.rpg.place;
+
+import fr.diamons.rpg.Choice;
 
 public abstract class Place extends Choice implements PlaceAction {
     private final Path path;

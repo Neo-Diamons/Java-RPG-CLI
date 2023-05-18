@@ -1,4 +1,7 @@
-package fr.diamons.rpg;
+package fr.diamons.rpg.place;
+
+import fr.diamons.rpg.Choice;
+import fr.diamons.rpg.entity.Player;
 
 public class Town extends Place {
     public Town(String name) {

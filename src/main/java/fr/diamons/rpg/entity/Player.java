@@ -1,4 +1,7 @@
-package fr.diamons.rpg;
+package fr.diamons.rpg.entity;
+
+import fr.diamons.rpg.item.Food;
+import fr.diamons.rpg.item.Item;
 
 public class Player extends Entity {
     private final Inventory inventory;
