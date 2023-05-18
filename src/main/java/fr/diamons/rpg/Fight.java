@@ -1,15 +1,18 @@
 package fr.diamons.rpg;
 
-import java.util.Random;
-import java.util.Scanner;
 
-public class Fight {
+public class Fight extends Choice {
     private final Player player;
     private final Monster monster;
 
     public Fight(Player player, Monster monster) {
+        super("Fight");
         this.player = player;
         this.monster = monster;
+
+        this.addChoice(new Choice("Attack"));
+        this.addChoice(new Choice("Heal"));
+        this.addChoice(new Choice("Run"));
     }
 
     public void start() {
@@ -17,42 +20,14 @@ public class Fight {
         System.out.println("You are fighting a " + monster.getName() + " (Level " + monster.getLevel() + ")");
 
         while (player.getHealth() > 0 && monster.getHealth() > 0) {
-
-
             {
-                boolean isValid = false;
-
-                while (!isValid) {
-                    System.out.println("\n/----------[ Your turn ]----------\\");
-                    System.out.println("1. Attack");
-                    System.out.println("2. Heal");
-                    System.out.println("3. Run");
-
-                    System.out.print("\nEnter your choice: ");
-                    String choice = new java.util.Scanner(System.in).nextLine();
-
-                    if (!choice.matches("[0-9]")) {
-                        continue;
-                    }
-
-                    int value = Integer.parseInt(choice);
-                    switch (value) {
-                        case 1:
-                            isValid = true;
-                            monster.addDamage(player.getAttack());
-                            break;
-                        case 2:
-                            isValid = true;
-//                    playerHeal();
-                            break;
-                        case 3:
-                            isValid = true;
-//                    playerRun();
-                            break;
-                        default:
-                            System.out.println("\033[31mInvalid choice\033[0m");
-                            break;
-                    }
+                switch (super.chooseChoice("Your turn").getName()) {
+                    case "Fight":
+                        monster.addDamage(player.getAttack()); break;
+                    case "Heal":
+                        break; // TODO: heal
+                    case "Run":
+                        break; // TODO: run
                 }
             }
 
@@ -65,7 +40,7 @@ public class Fight {
         if (player.getHealth() > 0) {
             System.out.println("\nYou won the fight !");
             System.out.println("You earned " + monster.getLevel() * 10 + " XP");
-//            player.addXp(monster.getLevel() * 10);
+            // TODO: add xp
         } else if (player.getHealth() <= 0) {
             System.out.println("\nYou lost the fight !");
         }
