@@ -76,8 +76,7 @@ public class Fight extends Choice {
 
         if (player.getHealth() > 0) {
             System.out.println("\nYou won the fight !");
-            System.out.println("You earned " + monster.getLevel() * 10 + " XP");
-            // TODO: add xp
+            player.addXp(monster.getLevel() * 25);
             dropItem();
         } else if (player.getHealth() <= 0) {
             System.out.println("\nYou lost the fight !");

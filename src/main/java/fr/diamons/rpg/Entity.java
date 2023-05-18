@@ -4,14 +4,10 @@ import java.util.Random;
 
 public class Entity {
     public final String name;
-
-    public final int maxHealth;
-
+    public int maxHealth;
     public int health;
-
-    public final int attack;
-
-    public final int level;
+    public int attack;
+    public int level;
 
     public Entity(String name, int health, int attack, int level) {
         this.name = name;
