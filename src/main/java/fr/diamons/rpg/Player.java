@@ -1,7 +1,5 @@
 package fr.diamons.rpg;
 
-import java.util.Random;
-
 public class Player extends Entity {
     private final Inventory inventory;
     private int xp;

@@ -28,21 +28,21 @@ public class Fight extends Choice {
         if (diffLevel < 0) {
             return true;
         }
-
-        double chance = 100 - Math.exp(Math.pow(diffLevel, 0.525));
-        double random = new java.util.Random().nextDouble() * 100;
-        return random < chance;
+        return new java.util.Random().nextDouble() * 100 < 100 - Math.exp(Math.pow(diffLevel, 0.525));
     }
 
     public void dropItem() {
-        int random = new java.util.Random().nextInt(100);
-
-        if (random < 50) {
+        if (new java.util.Random().nextInt(100) < 50) {
             System.out.println("\nYou didn't get any item.");
             return;
         }
 
-        Item item = new Food("Apple", 10);
+        Item item;
+        if (new java.util.Random().nextInt(100) < 25) {
+            item = new Item("Metal");
+        } else {
+            item = new Food("Apple", 10);
+        }
         this.player.addItem(item);
         System.out.println("\nYou got a " + item.getName() + " !");
     }

@@ -1,7 +1,5 @@
 package fr.diamons.rpg;
 
-import java.util.Random;
-
 public class Entity {
     public final String name;
     public int maxHealth;
@@ -41,9 +39,8 @@ public class Entity {
     }
 
     public void dealDamage(Entity entity) {
-        Random random = new Random();
         int min = (int)(this.attack * 0.5);
         int max = (int)(this.attack * 1.5);
-        entity.addDamage(random.nextInt(max - min + 1) + min);
+        entity.addDamage(new java.util.Random().nextInt(max - min + 1) + min);
     }
 }
