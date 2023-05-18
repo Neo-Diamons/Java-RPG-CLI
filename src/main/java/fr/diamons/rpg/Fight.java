@@ -17,15 +17,18 @@ public class Fight {
         System.out.println("You are fighting a " + monster.getName() + " (Level " + monster.getLevel() + ")");
 
         while (player.getHealth() > 0 && monster.getHealth() > 0) {
-            System.out.println("\n/----------[ Your turn ]----------\\");
-            System.out.println("1. Attack");
-            System.out.println("2. Heal");
-            System.out.println("3. Run");
+
 
             {
                 boolean isValid = false;
 
                 while (!isValid) {
+                    System.out.println("\n/----------[ Your turn ]----------\\");
+                    System.out.println("1. Attack");
+                    System.out.println("2. Heal");
+                    System.out.println("3. Run");
+
+                    System.out.print("\nEnter your choice: ");
                     String choice = new java.util.Scanner(System.in).nextLine();
 
                     if (!choice.matches("[0-9]")) {
@@ -47,7 +50,7 @@ public class Fight {
 //                    playerRun();
                             break;
                         default:
-                            System.out.println("Invalid choice");
+                            System.out.println("\033[31mInvalid choice\033[0m");
                             break;
                     }
                 }
