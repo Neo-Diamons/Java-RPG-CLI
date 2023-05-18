@@ -19,8 +19,10 @@ public class Player extends Entity {
             return;
         }
 
-        System.out.println("\n" + this.name +  " healed " + Math.min(food.getHealth(), this.maxHealth) + " health!");
+        System.out.println("\n" + this.name +  " healed " + Math.min(food.getHealth(), this.maxHealth - this.health)
+                + " health!");
         System.out.println(this.name + " has " + this.health + "/" + this.maxHealth + " health left.");
+        this.health += Math.min(food.getHealth(), this.maxHealth);
     }
 
     public void levelUp() {
