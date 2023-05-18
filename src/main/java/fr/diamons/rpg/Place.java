@@ -22,7 +22,7 @@ public class Place extends Choice {
         while (true) {
             switch (super.chooseChoice("Current place").getName()) {
                 case "Fight":
-                    Fight fight = new Fight(player, new Monster("Monster", 100, 10, 1));
+                    Fight fight = new Fight(player, new Monster("Monster", 100, 10, 3));
                     fight.start();
                     break;
                 case "Inventory":

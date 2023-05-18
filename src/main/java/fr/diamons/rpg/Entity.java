@@ -44,10 +44,6 @@ public class Entity {
         return this.level;
     }
 
-    public void addToHealth(int value) {
-        this.health += value;
-    }
-
     public void dealDamage(Entity entity) {
         Random random = new Random();
         int min = (int)(this.attack * 0.5);

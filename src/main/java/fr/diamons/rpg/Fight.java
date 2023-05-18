@@ -15,20 +15,37 @@ public class Fight extends Choice {
         this.addChoice(new Choice("Run"));
     }
 
+    public boolean isRunning() {
+        int diffLevel = this.monster.getLevel() - this.player.getLevel();
+
+        if (diffLevel < 0) {
+            return true;
+        }
+
+        double chance = 100 - Math.exp(Math.pow(diffLevel, 0.525));
+        double random = new java.util.Random().nextDouble() * 100;
+        return random < chance;
+    }
+
     public void start() {
         System.out.println("\n/----------[ Fight ]----------\\");
         System.out.println("You are fighting a " + monster.getName() + " (Level " + monster.getLevel() + ")");
 
+
         while (player.getHealth() > 0 && monster.getHealth() > 0) {
-            {
-                switch (super.chooseChoice("Your turn").getName()) {
-                    case "Fight":
-                        player.dealDamage(monster); break;
-                    case "Heal":
-                        break; // TODO: heal
-                    case "Run":
-                        break; // TODO: run
-                }
+            switch (super.chooseChoice("Your turn").getName()) {
+                case "Fight":
+                    player.dealDamage(monster); break;
+                case "Heal":
+                    player.Heal(); break;
+                case "Run":
+                    if (isRunning()) {
+                        System.out.println("\nYou ran away from the fight !");
+                        return;
+                    } else {
+                        System.out.println("\nYou failed to run away from the fight !");
+                    }
+                    break;
             }
 
             if (monster.getHealth() > 0) {
