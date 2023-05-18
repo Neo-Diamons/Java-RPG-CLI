@@ -8,7 +8,7 @@ public class Choice {
 
     public Choice(String name) {
         this.name = name;
-        this.choices = new LinkedList<Choice>();
+        this.choices = new LinkedList<>();
     }
 
     public String getName() {
