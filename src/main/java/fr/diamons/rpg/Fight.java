@@ -3,20 +3,26 @@ package fr.diamons.rpg;
 
 public class Fight extends Choice {
     private final Player player;
-    private final Monster monster;
+    private final Monster[] monsters;
 
     public Fight(Player player, Monster monster) {
         super("Fight");
         this.player = player;
-        this.monster = monster;
+        this.monsters = new Monster[] {
+                new Monster("Goblin", 100, 10, 1),
+                new Monster("Orc", 150, 15, 2),
+                new Monster("Troll", 200, 20, 3),
+                new Monster("Dragon", 250, 25, 4),
+                new Monster("Demon", 300, 30, 5)
+        };
 
         this.addChoice(new Choice("Attack"));
         this.addChoice(new Choice("Heal"));
         this.addChoice(new Choice("Run"));
     }
 
-    public boolean isRunning() {
-        int diffLevel = this.monster.getLevel() - this.player.getLevel();
+    public boolean isRunning(Monster monster) {
+        int diffLevel = monster.getLevel() - this.player.getLevel();
 
         if (diffLevel < 0) {
             return true;
@@ -28,9 +34,10 @@ public class Fight extends Choice {
     }
 
     public void start() {
+        Monster monster = monsters[new java.util.Random().nextInt(monsters.length)];
+
         System.out.println("\n/----------[ Fight ]----------\\");
         System.out.println("You are fighting a " + monster.getName() + " (Level " + monster.getLevel() + ")");
-
 
         while (player.getHealth() > 0 && monster.getHealth() > 0) {
             switch (super.chooseChoice("Your turn").getName()) {
@@ -39,7 +46,7 @@ public class Fight extends Choice {
                 case "Heal":
                     player.Heal(); break;
                 case "Run":
-                    if (isRunning()) {
+                    if (isRunning(monster)) {
                         System.out.println("\nYou ran away from the fight !");
                         return;
                     } else {
