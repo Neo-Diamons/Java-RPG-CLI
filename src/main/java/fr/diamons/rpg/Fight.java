@@ -5,7 +5,7 @@ public class Fight extends Choice {
     private final Player player;
     private final Monster[] monsters;
 
-    public Fight(Player player, Monster monster) {
+    public Fight(Player player) {
         super("Fight");
         this.player = player;
         this.monsters = new Monster[] {
@@ -49,9 +49,8 @@ public class Fight extends Choice {
                     if (isRunning(monster)) {
                         System.out.println("\nYou ran away from the fight !");
                         return;
-                    } else {
-                        System.out.println("\nYou failed to run away from the fight !");
                     }
+                    System.out.println("\nYou failed to run away from the fight !");
                     break;
             }
 
